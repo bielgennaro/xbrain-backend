@@ -10,9 +10,9 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface VendedorRepository extends JpaRepository<Vendedor, Long> {
+public interface VendedorRepository extends JpaRepository<Vendedor, Integer> {
     @Query
-    ("SELECT v, COUNT(v), AVG(v.valor) FROM Venda  v WHERE v.data BETWEEN :dataInicial AND :dataFinal GROUP BY v.vendedor")
-    List<Object[]> findVendedoresComTotalEMediaDeVendas(@Param("dataInicial") Date dataInicial, @Param("dataFinal")Date dataFinal);
+            ("SELECT v, COUNT(v), AVG(v.valor) FROM Venda  v WHERE v.data BETWEEN :dataInicial AND :dataFinal GROUP BY v.vendedor")
+    List<Object[]> findVendedoresComTotalEMediaDeVendas(@Param("dataInicial") Date dataInicial, @Param("dataFinal") Date dataFinal);
 }
 

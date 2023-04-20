@@ -15,7 +15,7 @@ public class VendaController {
     private VendaService vendaService;
 
     @PostMapping
-    public Venda criarVenda(@RequestBody Venda venda){
-        return vendaService.criarVenda(venda);
+    public void criarVenda(@RequestBody Venda venda) {
+        vendaService.criarVenda(venda);
     }
 }

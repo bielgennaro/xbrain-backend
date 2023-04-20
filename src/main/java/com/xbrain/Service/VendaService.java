@@ -5,13 +5,16 @@ import com.xbrain.Venda;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class VendaService {
 
     @Autowired
     private VendaRepository vendaRepository;
 
-    public Venda criarVenda(Venda venda){
-        return vendaRepository.save(venda);
+    public void criarVenda(Venda venda) {
+        venda.setData(LocalDateTime.now());
+        vendaRepository.save(venda);
     }
 }

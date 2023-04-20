@@ -1,18 +1,16 @@
 package com.xbrain.Controllers;
 
 import com.xbrain.Service.VendedorService;
+import com.xbrain.Vendedor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/vendedores")
+@RequestMapping("/vendedor")
 public class VendedorController {
     @Autowired
     private VendedorService vendedorService;
@@ -22,7 +20,10 @@ public class VendedorController {
             @RequestParam("data-inicial") @DateTimeFormat(pattern = "dd-MM-yyyy") Date dataInicial,
             @RequestParam("data-final") @DateTimeFormat(pattern = "dd-MM-yyyy") Date dataFinal) {
         return vendedorService.findVendedoresComTotalEMediaDeVendas(dataInicial, dataFinal);
-
     }
 
+    @PostMapping("/cadastrar")
+    public void cadastrarVendedor(@RequestBody Vendedor vendedor) {
+        vendedorService.cadastrarVendedor(vendedor);
+    }
 }

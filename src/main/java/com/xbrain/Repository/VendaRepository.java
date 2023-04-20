@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface VendaRepository extends JpaRepository<Venda, Long> {
+public interface VendaRepository extends JpaRepository<Venda, Integer> {
     List<Venda> findByDataBetween(Date dataInicial, Date dataFinal);
 
 }
