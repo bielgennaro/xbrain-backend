@@ -3,18 +3,15 @@ package com.xbrain;
 import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Table
 public class Venda {
@@ -22,9 +19,10 @@ public class Venda {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @DateTimeFormat
     private LocalDateTime data;
 
-    private BigDecimal valor;
+    private Double valor;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "vendedor", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_vendedor"))
