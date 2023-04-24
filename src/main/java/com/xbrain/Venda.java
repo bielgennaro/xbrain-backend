@@ -6,7 +6,6 @@ import jakarta.persistence.GenerationType;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,7 +15,7 @@ import java.time.LocalDateTime;
 @Table
 public class Venda {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @DateTimeFormat

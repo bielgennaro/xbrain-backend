@@ -1,8 +1,9 @@
 package com.xbrain;
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,17 +14,16 @@ import java.util.List;
 @Entity
 public class Vendedor {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String nome;
 
-    @DateTimeFormat
     private LocalDateTime data;
 
-    private int totalVendas;
+    private Integer totalVendas;
 
-    private int mediaVendasDiaria;
+    private Integer mediaVendasDiaria;
 
     @OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL)
     private List<Venda> vendas;

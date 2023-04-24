@@ -4,13 +4,14 @@ import com.xbrain.Service.VendedorService;
 import com.xbrain.Vendedor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/vendedor")
+@RequestMapping(value = "/vendedor", produces = MediaType.APPLICATION_JSON_VALUE)
 public class VendedorController {
     @Autowired
     private VendedorService vendedorService;
