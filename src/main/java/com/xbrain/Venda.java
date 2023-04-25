@@ -1,9 +1,9 @@
 package com.xbrain;
 
 import jakarta.persistence.*;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Table
 public class Venda {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     @DateTimeFormat
@@ -24,6 +24,9 @@ public class Venda {
     private Double valor;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "vendedor", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_vendedor"))
+    @JoinColumns({
+            @JoinColumn(name = "vendedor_id", referencedColumnName = "id"),
+            @JoinColumn(name = "vendedor_nome", referencedColumnName = "vendedor_nome")
+    })
     private Vendedor vendedor;
 }
