@@ -15,15 +15,15 @@ import java.util.List;
 public class Vendedor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    private String nome;
+    private Integer id;
 
     private LocalDateTime data;
 
+    private String vendedor_nome;
+
     private Integer totalVendas;
 
-    private Integer mediaVendasDiaria;
+    private Double mediaVendasDiaria;
 
     @OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL)
     private List<Venda> vendas;
