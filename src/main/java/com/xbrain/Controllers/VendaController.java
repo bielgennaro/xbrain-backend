@@ -3,23 +3,22 @@ package com.xbrain.Controllers;
 import com.xbrain.Service.VendaService;
 import com.xbrain.Venda;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/venda", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/venda")
 public class VendaController {
     @Autowired
     private VendaService vendaService;
 
-    @ResponseBody
     @PostMapping("/cadastrar-venda")
     public void criarVenda(@RequestBody Venda venda) {
         vendaService.criarVenda(venda);
+
     }
 }
+
+
